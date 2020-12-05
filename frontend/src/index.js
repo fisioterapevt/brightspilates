@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+
+import "./index.scss";
+import { GlobalState } from "./context/globalContext/GlobalState";
+
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
-	<React.StrictMode>
+	<GlobalState>
 		<App />
-	</React.StrictMode>,
+	</GlobalState>,
 	document.getElementById("root")
 );

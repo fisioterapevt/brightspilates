@@ -1,0 +1,58 @@
+@import "../../../../utils/variables.scss";
+
+.mainNav {
+	ul {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		width: 100%;
+		li {
+			margin-right: 2rem;
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+.drawerNav {
+	display: none;
+}
+
+.menuButton {
+	display: none;
+}
+
+@media screen and (max-width: $smDesktopWidth) {
+	.mainNav {
+		display: none;
+	}
+
+	.drawerNav {
+		display: block;
+	}
+
+	.menuButton {
+		display: block;
+		width: 6rem;
+		height: 6rem;
+
+		background: none;
+		border: none;
+
+		background-image: url(../../../../assets/svg/open_menu-icon.svg);
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+
+		cursor: pointer;
+	}
+}
+
+@media screen and (max-width: $tabletWidth) {
+	.menuButton {
+		width: 5rem;
+		height: 5rem;
+	}
+}

@@ -1,0 +1,23 @@
+.LangToggle {
+	position: absolute;
+	right: 0;
+	//bottom: 0;
+	button {
+		background: none;
+		border: none;
+		margin: 0;
+		padding: 0;
+		margin-right: 0.5rem;
+
+		font-size: 0.7rem;
+
+		color: #0000005b;
+
+		cursor: pointer;
+
+		&:disabled {
+			//opacity: 1;
+			color: #000000;
+		}
+	}
+}

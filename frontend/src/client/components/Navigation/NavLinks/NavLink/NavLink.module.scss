@@ -1,0 +1,14 @@
+@import "../../../../../utils/variables.scss";
+
+.link a {
+	font-weight: 600;
+	color: $text-color-navigation;
+
+	text-transform: uppercase;
+	text-decoration: none;
+
+	&.active {
+		//color: $text-color-navigation-active;
+		opacity: 0.5;
+	}
+}

@@ -1,0 +1,95 @@
+@import "../../../../utils/variables.scss";
+
+.Drawer {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 999;
+	height: 100vh;
+	width: 70%;
+	background: #000000;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+	overflow-y: scroll;
+
+	ul {
+		justify-content: center;
+		align-items: center;
+
+		margin: 3rem;
+		li {
+			margin-left: 2rem;
+			margin-bottom: 5rem;
+			a {
+				color: #ffffff;
+			}
+		}
+	}
+
+	.logo {
+		margin-top: 1rem;
+		width: 17rem;
+	}
+
+	svg text {
+		fill: #ffffff;
+	}
+}
+
+.closeButton {
+	position: absolute;
+	right: 0;
+	top: 0;
+
+	width: 34px;
+	height: 34px;
+
+	background: none;
+	border: none;
+
+	background-image: url(../../../../assets/svg/close-icon.svg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+
+	cursor: pointer;
+}
+
+.langToggle {
+	button {
+		font-size: $font-size-big;
+		color: #ffffff63;
+
+		&:disabled {
+			color: #ffffff;
+		}
+	}
+}
+
+@media screen and (max-width: $tabletWidth) {
+	.Drawer {
+		.logo {
+			width: 11rem;
+		}
+	}
+}
+
+.slideDropDownEnter {
+	transform: translateX(-100%);
+}
+
+.slideDropDownEnterActive {
+	transform: translateX(0);
+	opacity: 1;
+	transition: all 200ms;
+}
+
+.slideDropDownExit {
+	transform: translateX(0%);
+	opacity: 1;
+}
+
+.slideDropDownExitActive {
+	transform: translateX(-100%);
+	opacity: 0;
+	transition: all 200ms;
+}

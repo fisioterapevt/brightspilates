@@ -1,0 +1,109 @@
+//* font-family
+$main-font: "Roboto", Helvetica, Arial, sans-serif;
+//$secondary-font: "Roboto", Helvetica, Arial, sans-serif;
+
+//* font-size
+$font-size-default: 16px;
+$font-size-small: 12px;
+$font-size-medium: 18px;
+$font-size-big: 24px;
+$font-size-huge: 28px;
+
+$font-text-mobile: 14px;
+$font-text-tablet: 16px;
+$font-text-desktop: 20px;
+
+//* font-weight
+$font-weight-thin: 100;
+$font-weight-light: 300;
+$font-weight-default: 400;
+$font-weight-medium: 600;
+$font-weight-semibold: 700;
+$font-weight-bold: 900;
+
+//! SCREEN SIZE
+//* Size screen
+$maxDesktopWidth: 2560px;
+$bigDesktopWidth: 2560px;
+$desktopWidth: 1280px;
+$smDesktopWidth: 1024px;
+$tabletWidth: 768px;
+$phoneWidth: 480px;
+$smPhoneWidth: 360px;
+
+//*Screen
+$retina-dpi: 144dpi;
+$retina-dppx: 1.5dppx;
+
+//! TEXT COLOR
+//* Text color
+
+$text-color-default: #585858;
+$text-color-default-light: #686868;
+$text-color-default-lighter: #b4b4b4;
+$text-color-default-dark: #3f3f3f;
+$text-color-hover: #efb821;
+$text-color-active: #64c5c1;
+$text-color-success: #7bc549;
+$text-color-average: #e49a27;
+$text-color-danger: #f01010;
+$text-color-required: #790000;
+
+//^ Text specific
+$text-color-primary: #a08a84;
+$text-color-secondary: #5a4a45;
+$text-color-tertiary: #505050;
+
+$text-color-navigation: #000000;
+$text-color-navigation-active: #64c5c1;
+
+$text-color-background-menu: #ffd7cc;
+
+//! COLOR
+// ^Main color
+$default-color: #ffffff;
+$primary-color: #a08a84;
+$primary-color-light: #cab3ae;
+$secondary-color: #606c50;
+$tertiary-color: #b6869d;
+$success-color: #26de81;
+$danger-color: #fc5c65;
+$warning-color: #fed330;
+$light-color: #e6e6e6;
+$purple-color: #8854d0;
+
+// ^Neutral Color
+$neutral-primary: #303133;
+$neutral-regular: #606266;
+$neutral-secondary: #909399;
+$neutral-placeholder: #dfdfdf;
+$neutral-placeholder-darker: #d8d8d8;
+$neutral-placeholder-dark: #cccccc;
+
+// ^Border Color
+$border-base: #dcdfe6;
+$border-light: #e4e7ed;
+$border-lighter: #ebeef5;
+$border-lightex: #f2f6fc;
+$border-dark: #cecece;
+
+//*******************************
+//*********** MIXINS ************
+//*******************************
+
+%centered {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@function rem($pixels, $context: $font-size-default) {
+	@if (unitless($pixels)) {
+		$pixels: $pixels * 1px;
+	}
+	@if (unitless($context)) {
+		$context: $context * 1px;
+	}
+	@return $pixels / $context * 1rem;
+}

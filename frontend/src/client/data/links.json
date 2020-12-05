@@ -1,0 +1,28 @@
+{
+  "mainLinks": [
+    {
+      "id": "link_1",
+      "name": "home",
+      "link": "/",
+      "exact": true
+    },
+    {
+      "id": "link_2",
+      "name": "exercises",
+      "link": "/exercises",
+      "exact": true
+    },
+    {
+      "id": "link_3",
+      "name": "group",
+      "link": "/online-group",
+      "exact": true
+    },
+    {
+      "id": "link_4",
+      "name": "createWorkout",
+      "link": "/workout-creator",
+      "exact": true
+    }
+  ]
+}
