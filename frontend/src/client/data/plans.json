@@ -1,0 +1,42 @@
+{
+  "group_workout_min": {
+    "id": "group_workout",
+    "name": "group_workout",
+    "qty": "1 ",
+    "price": "10$"
+  },
+  "group_workouts_max": {
+    "id": "group_workouts",
+    "name": "group_workouts",
+    "qty": "10 ",
+    "price": "80$"
+  },
+  "private_workout_min": {
+    "id": "private_workout",
+    "name": "private_workout",
+    "qty": "1 ",
+    "price": "80$"
+  },
+  "private_workouts_mid": {
+    "id": "private_workouts",
+    "name": "private_workouts",
+    "qty": "5 ",
+    "price": "450$"
+  },
+  "private_workouts_max": {
+    "id": "private_workouts",
+    "name": "private_workouts",
+    "qty": "10 ",
+    "price": "800$"
+  },
+  "monthly": {
+    "id": "monthly",
+    "name": "monthly",
+    "price": "10$"
+  },
+  "annual": {
+    "id": "annual",
+    "name": "annual",
+    "price": "100$"
+  }
+}

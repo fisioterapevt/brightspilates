@@ -4,7 +4,8 @@ $main-font: "Roboto", Helvetica, Arial, sans-serif;
 
 //* font-size
 $font-size-default: 16px;
-$font-size-small: 12px;
+$font-size-little: 12px;
+$font-size-small: 14px;
 $font-size-medium: 18px;
 $font-size-big: 24px;
 $font-size-huge: 28px;
@@ -21,10 +22,11 @@ $font-weight-medium: 600;
 $font-weight-semibold: 700;
 $font-weight-bold: 900;
 
-//! SCREEN SIZE
-//* Size screen
+//*************************************
+//*********** Size screen *************
+//*************************************
 $maxDesktopWidth: 2560px;
-$bigDesktopWidth: 2560px;
+$bigDesktopWidth: 1920px;
 $desktopWidth: 1280px;
 $smDesktopWidth: 1024px;
 $tabletWidth: 768px;
@@ -59,6 +61,8 @@ $text-color-navigation-active: #64c5c1;
 
 $text-color-background-menu: #ffd7cc;
 
+$text-color-input: #bfbfbf;
+
 //! COLOR
 // ^Main color
 $default-color: #ffffff;
@@ -76,12 +80,12 @@ $purple-color: #8854d0;
 $neutral-primary: #303133;
 $neutral-regular: #606266;
 $neutral-secondary: #909399;
-$neutral-placeholder: #dfdfdf;
+$neutral-placeholder: #f9fafa;
 $neutral-placeholder-darker: #d8d8d8;
 $neutral-placeholder-dark: #cccccc;
 
 // ^Border Color
-$border-base: #dcdfe6;
+$border-base: #e5e5e5;
 $border-light: #e4e7ed;
 $border-lighter: #ebeef5;
 $border-lightex: #f2f6fc;
@@ -96,6 +100,51 @@ $border-dark: #cecece;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
+
+%button-gray {
+	position: relative;
+	display: inline-block;
+
+	padding: 0 1rem;
+	margin-bottom: 1rem;
+
+	line-height: 2rem;
+	vertical-align: middle;
+	text-align: center;
+	text-decoration: none;
+	color: #000;
+	outline: none;
+	border-radius: 5px;
+	box-shadow: 0 0 0 1px #ddd inset, 0 1px 1px #fff;
+
+	cursor: pointer;
+
+	&:hover {
+		background: #dcdcdc linear-gradient(#fff, #dcdcdc);
+		box-shadow: 0 0 0 1px #aaa inset, 0 1px 1px #aaa;
+	}
+	&:active {
+		background: none;
+		box-shadow: 0 0 0 1px #bbb inset, 0 1px 3px rgba(0, 0, 0, 0.5) inset,
+			0 1px 2px #fff;
+	}
+}
+
+%visually-hidden {
+	position: absolute;
+
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+
+	white-space: nowrap;
+
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
 }
 
 @function rem($pixels, $context: $font-size-default) {

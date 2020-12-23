@@ -1,0 +1,43 @@
+@import "../../../utils/variables.scss";
+
+.VideoList {
+	padding: 0 1rem;
+
+	.create {
+		margin: 1rem;
+	}
+	table {
+		width: 100%;
+		tr {
+			border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+			th,
+			td {
+				font-size: $font-size-little;
+				text-align: center;
+				padding: 0.05rem;
+				border: 1px solid rgba(0, 0, 0, 0.05);
+			}
+		}
+		.userName {
+			color: rgb(255, 0, 0);
+			font-size: 30px;
+			font-style: italic;
+			font-weight: 800;
+		}
+
+		.buttons {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			.edit,
+			.delete {
+				background: none;
+				padding: 0;
+				svg {
+					width: 1rem;
+					margin: 2px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,21 @@
+@import "../../../../utils/variables.scss";
+
+.adminNav {
+	display: flex;
+	flex-direction: column;
+
+	ul {
+		li {
+			margin: 2rem;
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $smDesktopWidth) {
+}
+
+@media screen and (max-width: $tabletWidth) {
+}

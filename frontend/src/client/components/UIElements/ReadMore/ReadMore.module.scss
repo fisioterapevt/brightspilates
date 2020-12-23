@@ -1,0 +1,19 @@
+@import "../../../../utils/variables.scss";
+
+.ReadMore {
+	.button {
+		background: none;
+		padding: 0;
+		margin-top: 0.5rem;
+
+		font-size: $font-size-little;
+		color: $text-color-default-dark;
+		text-transform: uppercase;
+		text-decoration: underline;
+
+		&:hover {
+			font-weight: $font-weight-medium;
+			cursor: pointer;
+		}
+	}
+}

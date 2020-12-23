@@ -1,0 +1,33 @@
+.UserList {
+	margin: 0 5rem;
+
+	svg {
+		width: 2rem;
+	}
+
+	table {
+		width: 100%;
+		tr {
+			border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+			th,
+			td {
+				padding: 0.75rem;
+				border: 1px solid rgba(0, 0, 0, 0.05);
+			}
+		}
+		.userName {
+			color: rgb(255, 0, 0);
+			font-size: 30px;
+			font-style: italic;
+			font-weight: 800;
+		}
+		.editUser,
+		.deleteUser {
+			background: none;
+		}
+		.deleteUser:disabled {
+			opacity: 0.1;
+			cursor: not-allowed;
+		}
+	}
+}

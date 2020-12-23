@@ -1,0 +1,37 @@
+@import "../../../../utils/variables.scss";
+
+$radius: 3px;
+
+.Button {
+	display: inline-block;
+
+	width: 100%;
+
+	padding: 0.5rem 1.5rem;
+
+	font: inherit;
+	color: white;
+
+	background: #000000;
+	border: none;
+	text-decoration: none;
+	border-radius: $radius;
+
+	cursor: pointer;
+
+	&:hover,
+	&:active {
+		background: #000000b6;
+	}
+}
+
+.inverse {
+	border: 1px solid #000000;
+	background: transparent;
+	color: #000000;
+
+	&:hover {
+		background: #000000;
+		color: white;
+	}
+}

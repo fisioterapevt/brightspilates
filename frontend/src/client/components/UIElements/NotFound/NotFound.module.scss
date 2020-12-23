@@ -1,0 +1,93 @@
+@import "../../../../utils/variables.scss";
+
+.NotFound {
+	position: relative;
+
+	width: 100vw;
+	height: 100vh;
+}
+
+.trademark {
+	@extend %centered;
+	width: 85%;
+	height: 100%;
+	opacity: 3%;
+	background-image: url(../../../../assets/svg/logo.svg);
+	background-position: center center;
+	background-repeat: repeat-y;
+}
+
+.message {
+	@extend %centered;
+	width: 100%;
+	text-align: center;
+	padding: 0 2rem;
+
+	p {
+		text-transform: uppercase;
+		font-size: 2rem;
+		color: $text-color-default-lighter;
+	}
+}
+
+.goBack {
+	margin: 1.6rem;
+
+	text-transform: uppercase;
+	font-size: 1.2rem;
+	letter-spacing: 2.5px;
+	line-height: 25px;
+
+	color: #000000;
+	padding: 0;
+
+	background: none;
+
+	cursor: pointer;
+
+	&:hover {
+		font-weight: $font-weight-medium;
+	}
+}
+
+@media screen and (max-width: $tabletWidth) {
+	.trademark {
+		h2 {
+			font-size: 8rem;
+		}
+		h3 {
+			bottom: -1rem;
+			font-size: 2rem;
+		}
+	}
+
+	.message p {
+		font-size: 1.6rem;
+	}
+
+	.goBack {
+		margin: 1rem;
+		font-size: 1.1rem;
+	}
+}
+
+@media screen and (max-width: $phoneWidth) {
+	.trademark {
+		h2 {
+			font-size: 6rem;
+		}
+		h3 {
+			bottom: -0.4rem;
+			font-size: 1.4rem;
+		}
+	}
+
+	.message p {
+		font-size: 1.2rem;
+	}
+
+	.goBack {
+		margin: 1rem;
+		font-size: 0.8rem;
+	}
+}

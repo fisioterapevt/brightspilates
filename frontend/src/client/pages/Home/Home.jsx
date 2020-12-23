@@ -1,15 +1,19 @@
 import React from "react";
 
+import translate from "../../../i18n/translate";
+import Card from "../../components/Card/Card";
+import NotFound from "../../components/UIElements/NotFound/NotFound";
+
 import classes from "./Home.module.scss";
-import translate from "../../../i18n/messages/translate";
-import NotFound from "../../components/NotFound/NotFound";
 
 const Home = () => {
+	console.log(localStorage.getItem("userInfo"));
 	return (
-		<div className={classes.Home}>
+		<section className={classes.Home}>
 			<h2 className={classes.headline}>{translate(`home`, {})}</h2>
+			<Card />
 			<NotFound />
-		</div>
+		</section>
 	);
 };
 

@@ -1,0 +1,19 @@
+@import "../../../../../utils/variables.scss";
+
+.PassToggle {
+	position: absolute;
+	top: 50%;
+	right: 5%;
+	transform: translateY(-50%);
+
+	width: 2rem;
+
+	cursor: pointer;
+
+	svg {
+		width: 100%;
+		height: 100%;
+
+		fill: $border-base;
+	}
+}
