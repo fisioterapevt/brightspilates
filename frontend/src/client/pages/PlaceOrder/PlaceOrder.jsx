@@ -17,6 +17,8 @@ import PayPalButton from "../../components/UIElements/Button/PayPalButton/PayPal
 const PlaceOrder = ({ match, history }) => {
 	const orderId = match.params.id;
 
+	const [pending, setPending] = useState(false);
+
 	const { order, deleteOrder, payOrder, loading, successPay } = useContext(
 		OrderContext
 	);
@@ -29,11 +31,7 @@ const PlaceOrder = ({ match, history }) => {
 		if (!userInfo) {
 			history.push("/login");
 		}
-		if (!order) {
-			history.push("/profile");
-		}
-
-		if (order.isPaid) {
+		if (!order || order.isPaid) {
 			history.push("/profile");
 		}
 
@@ -65,8 +63,6 @@ const PlaceOrder = ({ match, history }) => {
 		}
 	}, [history, userInfo, order, orderId, successPay]);
 
-	console.log(order);
-
 	const removeOrderFromPayment = () => {
 		deleteOrder(order._id, userInfo);
 	};
@@ -75,8 +71,13 @@ const PlaceOrder = ({ match, history }) => {
 		payOrder(orderId, paymentResult, userInfo);
 	};
 
+	//console.log("loading: ", loading);
+
+	console.log("pending ", pending);
+
 	return (
 		<div className={classes.PlaceOrder}>
+			{pending && <Loader />}
 			<div className={classes.header}>
 				<h1>{translate("proceed_to_checkout")}</h1>
 			</div>
@@ -107,6 +108,7 @@ const PlaceOrder = ({ match, history }) => {
 									amount={order.price}
 									description={order.name}
 									onSuccess={successPaymentHandler}
+									pendingPayment={setPending}
 								/>
 							)}
 						</section>

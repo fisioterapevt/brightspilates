@@ -22,9 +22,9 @@ const deleteStart = (state, action) => {
 
 const payStart = (state) => {
 	return updateObject(state, {
-		//loading: true,
-		//message: null,
-		//httpError: null,
+		loading: true,
+		message: null,
+		httpError: null,
 	});
 };
 
@@ -79,10 +79,11 @@ export const payOrder = (state, data) => {
 	return updateObject(state, {
 		order: data,
 		success: false,
+		loading: false,
 		//getListLoading: false,
 		//successDelete: false,
-		//message: null,
-		//httpError: null,
+		message: null,
+		httpError: null,
 	});
 };
 

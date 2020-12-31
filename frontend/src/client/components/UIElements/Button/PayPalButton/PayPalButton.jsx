@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const PayPalButton = ({ amount, description, onSuccess }) => {
+const PayPalButton = ({ amount, description, onSuccess, pendingPayment }) => {
 	const PayPalReact = window.paypal.Buttons.driver("react", {
 		React,
 		ReactDOM,
@@ -23,7 +23,12 @@ const PayPalButton = ({ amount, description, onSuccess }) => {
 	};
 
 	const onApprove = async (data, actions) => {
+		pendingPayment(true);
+
 		const order = await actions.order.capture();
+
+		pendingPayment(false);
+
 		return onSuccess(order);
 	};
 	//? доделать
