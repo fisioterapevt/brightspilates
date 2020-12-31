@@ -2,8 +2,8 @@ import React, { useCallback, useReducer } from "react";
 import axios from "axios";
 
 import * as actionTypes from "../actionTypes";
-import GlobalContext from "./global-context";
-import { globalReducer } from "./global-reducers";
+import UserContext from "./user-context";
+import { userReducer } from "./user-reducers";
 
 import { LOCALES } from "../../i18n";
 
@@ -11,7 +11,7 @@ const userInfoFromStorage = localStorage.getItem("userInfo")
 	? JSON.parse(localStorage.getItem("userInfo"))
 	: null;
 
-export const GlobalState = ({ children }) => {
+export const UserState = ({ children }) => {
 	const initialState = {
 		locale: LOCALES.DEFAULT,
 		userLogin: { userInfo: userInfoFromStorage },
@@ -24,7 +24,9 @@ export const GlobalState = ({ children }) => {
 		httpError: null,
 	};
 
-	const [globalState, dispatch] = useReducer(globalReducer, initialState);
+	const [userState, dispatch] = useReducer(userReducer, initialState);
+
+	const { userInfo } = userState.userLogin;
 
 	const setLocaleRussian = () => {
 		dispatch({
@@ -38,119 +40,8 @@ export const GlobalState = ({ children }) => {
 		});
 	};
 
-	//********* ADMIN ********* */
-	//@ GET ALL USERS
-	//- for using onto useEffect hook need useCallback hook
-	const getListUsers = useCallback(async () => {
-		try {
-			dispatch({
-				type: actionTypes.USER_LIST_REQUEST,
-			});
-
-			const { userInfo } = globalState.userLogin;
-
-			const config = {
-				headers: {
-					Authorization: `Bearer ${userInfo.token}`,
-				},
-			};
-
-			const { data } = await axios.get(`/api/users`, config);
-
-			dispatch({
-				type: actionTypes.USER_LIST_SUCCESS,
-				payload: data,
-			});
-		} catch (error) {
-			dispatch({
-				type: actionTypes.USER_LIST_FAIL,
-				payload:
-					error.response && error.response.data.message
-						? error.response.data.message
-						: error.message,
-			});
-		}
-	}, [globalState.userLogin]);
-
-	//@ DELETE USER BY ID
-	const deleteUser = async (id) => {
-		try {
-			dispatch({
-				type: actionTypes.USER_DELETE_REQUEST,
-			});
-
-			const { userInfo } = globalState.userLogin;
-
-			const config = {
-				headers: {
-					Authorization: `Bearer ${userInfo.token}`,
-				},
-			};
-
-			await axios.delete(`/api/users/${id}`, config);
-
-			dispatch({
-				type: actionTypes.USER_DELETE_SUCCESS,
-			});
-		} catch (error) {
-			dispatch({
-				type: actionTypes.USER_DELETE_FAIL,
-				payload:
-					error.response && error.response.data.message
-						? error.response.data.message
-						: error.message,
-			});
-		}
-	};
-
-	const uploadContent = async (name, file) => {
-		console.log(file);
-		const formData = new FormData();
-		formData.append(name, file);
-
-		try {
-			dispatch({
-				type: actionTypes.AVATAR_UPDATE_REQUEST,
-			});
-
-			const configUpload = {
-				headers: { "Content-Type": "multipart/form-data" },
-			};
-
-			const { data } = await axios.post(
-				"/api/content",
-				formData,
-				configUpload
-			);
-
-			console.log(data);
-
-			//const { userInfo } = globalState.userLogin;
-
-			//const config = {
-			//	headers: {
-			//		Authorization: `Bearer ${userInfo.token}`,
-			//	},
-			//};
-
-			//await axios.put(`/api/users/profile`, data, config);
-
-			dispatch({
-				type: actionTypes.AVATAR_UPDATE_SUCCESS,
-				payload: data,
-			});
-
-			//await axios.put(`/api/users/profile`, globalState.userLogin, config);
-		} catch (error) {
-			console.log(error);
-			dispatch({
-				type: actionTypes.AVATAR_UPDATE_FAIL,
-				payload: error,
-			});
-		}
-	};
 	//************************* */
-	//********* ADMIN ********* */
+	//********* USER ********** */
 	//************************* */
 
 	//@ LOGIN
@@ -161,6 +52,7 @@ export const GlobalState = ({ children }) => {
 			});
 
 			const config = { headers: { "Content-Type": "application/json" } };
+
 			const { data } = await axios.post(
 				"/api/users/login",
 				{
@@ -171,13 +63,9 @@ export const GlobalState = ({ children }) => {
 			);
 
 			dispatch({ type: actionTypes.USER_LOGIN_SUCCESS, payload: data });
-			localStorage.setItem("userInfo", JSON.stringify(data));
 
-			//@ logout when token is expired
-			setTimeout(() => {
-				localStorage.removeItem("userInfo");
-				dispatch({ type: actionTypes.USER_LOGOUT });
-			}, data.expToken * 1000);
+			//# add user to localStorage
+			localStorage.setItem("userInfo", JSON.stringify(data));
 		} catch (error) {
 			dispatch({
 				type: actionTypes.USER_LOGIN_FAIL,
@@ -192,17 +80,17 @@ export const GlobalState = ({ children }) => {
 	//@ LOGOUT
 	const logout = () => {
 		localStorage.removeItem("userInfo");
+		localStorage.removeItem("order");
 		dispatch({ type: actionTypes.USER_LOGOUT });
 		dispatch({ type: actionTypes.USER_NEW_PASSWORD_RESET });
 		//dispatch({ type: actionTypes.USER_LIST_RESET });
-		//dispatch({ type: actionTypes.ORDER_LIST_MY_RESET });
 	};
 
-	//@ REGISTER USER
-	const registerUser = async (name, email, password, locale) => {
+	//@ CREATE USER
+	const createUser = async (name, email, password, locale) => {
 		try {
 			dispatch({
-				type: actionTypes.USER_REGISTER_REQUEST,
+				type: actionTypes.USER_CREATE_REQUEST,
 			});
 
 			const config = { headers: { "Content-Type": "application/json" } };
@@ -217,12 +105,12 @@ export const GlobalState = ({ children }) => {
 				config
 			);
 
-			dispatch({ type: actionTypes.USER_REGISTER_SUCCESS, payload: data });
+			dispatch({ type: actionTypes.USER_CREATE_SUCCESS, payload: data });
 
 			localStorage.setItem("userInfo", JSON.stringify(data));
 		} catch (error) {
 			dispatch({
-				type: actionTypes.USER_REGISTER_FAIL,
+				type: actionTypes.USER_CREATE_FAIL,
 				payload:
 					error.response && error.response.data.message
 						? error.response.data.message
@@ -238,7 +126,7 @@ export const GlobalState = ({ children }) => {
 				type: actionTypes.USER_UPDATE_PROFILE_REQUEST,
 			});
 
-			const { userInfo } = globalState.userLogin;
+			//const { userInfo } = userState.userLogin;
 
 			const config = {
 				headers: {
@@ -251,6 +139,7 @@ export const GlobalState = ({ children }) => {
 				type: actionTypes.USER_UPDATE_PROFILE_SUCCESS,
 				payload: data,
 			});
+
 			localStorage.setItem("userInfo", JSON.stringify(data));
 		} catch (error) {
 			dispatch({
@@ -317,8 +206,6 @@ export const GlobalState = ({ children }) => {
 				type: actionTypes.USER_NEW_PASSWORD_SUCCESS,
 				payload: data,
 			});
-
-			//console.log(data);
 
 			if (!data.errorMsg) {
 				setTimeout(() => {
@@ -388,22 +275,146 @@ export const GlobalState = ({ children }) => {
 		});
 	}, []);
 
+	const checkTokenIsValid = () => {
+		if (new Date(userInfo.expToken * 1000) <= new Date()) {
+			localStorage.removeItem("userInfo");
+			localStorage.removeItem("order");
+			dispatch({ type: actionTypes.USER_LOGOUT });
+			dispatch({ type: actionTypes.USER_NEW_PASSWORD_RESET });
+		}
+	};
+
+	//************************* */
+	//********* ADMIN ********* */
+	//************************* */
+	//@ GET ALL USERS
+	//- for using onto useEffect hook need useCallback hook
+	const getListUsers = useCallback(async () => {
+		try {
+			dispatch({
+				type: actionTypes.USER_LIST_REQUEST,
+			});
+
+			//const { userInfo } = userState.userLogin;
+
+			const config = {
+				headers: {
+					Authorization: `Bearer ${userInfo.token}`,
+				},
+			};
+
+			const { data } = await axios.get(`/api/users`, config);
+
+			dispatch({
+				type: actionTypes.USER_LIST_SUCCESS,
+				payload: data,
+			});
+		} catch (error) {
+			dispatch({
+				type: actionTypes.USER_LIST_FAIL,
+				payload:
+					error.response && error.response.data.message
+						? error.response.data.message
+						: error.message,
+			});
+		}
+	}, [userInfo]);
+
+	//@ DELETE USER BY ID
+	const deleteUser = async (id) => {
+		try {
+			dispatch({
+				type: actionTypes.USER_DELETE_REQUEST,
+			});
+
+			//const { userInfo } = userState.userLogin;
+
+			const config = {
+				headers: {
+					Authorization: `Bearer ${userInfo.token}`,
+				},
+			};
+
+			await axios.delete(`/api/users/${id}`, config);
+
+			dispatch({
+				type: actionTypes.USER_DELETE_SUCCESS,
+			});
+		} catch (error) {
+			dispatch({
+				type: actionTypes.USER_DELETE_FAIL,
+				payload:
+					error.response && error.response.data.message
+						? error.response.data.message
+						: error.message,
+			});
+		}
+	};
+
+	//@ UPLOAD CONTENT
+	const uploadContent = async (name, file) => {
+		console.log(file);
+		const formData = new FormData();
+		formData.append(name, file);
+
+		try {
+			dispatch({
+				type: actionTypes.AVATAR_UPDATE_REQUEST,
+			});
+
+			const configUpload = {
+				headers: { "Content-Type": "multipart/form-data" },
+			};
+
+			const { data } = await axios.post(
+				"/api/content",
+				formData,
+				configUpload
+			);
+
+			console.log(data);
+
+			//const { userInfo } = userState.userLogin;
+
+			//const config = {
+			//	headers: {
+			//		Authorization: `Bearer ${userInfo.token}`,
+			//	},
+			//};
+
+			//await axios.put(`/api/users/profile`, data, config);
+
+			dispatch({
+				type: actionTypes.AVATAR_UPDATE_SUCCESS,
+				payload: data,
+			});
+
+			//await axios.put(`/api/users/profile`, userState.userLogin, config);
+		} catch (error) {
+			console.log(error);
+			dispatch({
+				type: actionTypes.AVATAR_UPDATE_FAIL,
+				payload: error,
+			});
+		}
+	};
+
 	return (
-		<GlobalContext.Provider
+		<UserContext.Provider
 			value={{
-				locale: globalState.locale,
-				userLogin: globalState.userLogin,
-				users: globalState.users,
-				successDelete: globalState.successDelete,
-				loading: globalState.loading,
-				httpError: globalState.httpError,
-				message: globalState.message,
+				locale: userState.locale,
+				userLogin: userState.userLogin,
+				users: userState.users,
+				successDelete: userState.successDelete,
+				loading: userState.loading,
+				httpError: userState.httpError,
+				message: userState.message,
 				setLocaleRussian,
 				setLocaleEnglish,
 				login,
 				logout,
 				resetPassword,
-				registerUser,
+				createUser,
 				getListUsers,
 				updateUserProfile,
 				deleteUser,
@@ -411,9 +422,10 @@ export const GlobalState = ({ children }) => {
 				uploadContent,
 				setNewPassword,
 				resetErrors,
+				checkTokenIsValid,
 			}}
 		>
 			{children}
-		</GlobalContext.Provider>
+		</UserContext.Provider>
 	);
 };

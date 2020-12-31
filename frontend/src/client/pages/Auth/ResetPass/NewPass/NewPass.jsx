@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import translate from "../../../../../i18n/translate";
 import Button from "../../../../components/UIElements/Button/Button";
 import Input from "../../../../components/UIElements/Input/Input";
-import GlobalContext from "../../../../../context/globalContext/global-context";
+import UserContext from "../../../../../context/userContext/user-context";
 import HttpError from "../../../../components/UIElements/HttpError/HttpError";
 
 import classes from "./NewPass.module.scss";
@@ -11,7 +11,7 @@ import Loader from "../../../../components/UIElements/Loader/Loader";
 
 const NewPass = ({ history, match }) => {
 	const { setNewPassword, message, httpError, loading } = useContext(
-		GlobalContext
+		UserContext
 	);
 
 	if (!match.params.token) {

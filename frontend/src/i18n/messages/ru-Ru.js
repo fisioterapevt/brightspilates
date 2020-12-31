@@ -20,13 +20,20 @@ export default {
 		Cancel: `Отменить`,
 
 		//************************* */
-		//***** Authentication **** */
+		//********* Button ******** */
 		//************************* */
 		signin: `Вход в аккаунт`,
 		signinBtn: `Войти`,
 		signup: `Регистрация аккаунта`,
 		signupBtn: `Зарегистрировать`,
 		logout: `Выйти`,
+		"go back": `Назад`,
+		continue: `Продолжить`,
+
+		//************************* */
+		//***** Authentication **** */
+		//************************* */
+
 		username: `Введите Ваше имя`,
 		useremail: `Введите Ваш E-mail`,
 		userpassword: `Введите Ваш пароль`,
@@ -34,6 +41,12 @@ export default {
 		notAccount: `Еще нет аккаунта?`,
 		"have an account": `Уже есть аккаунт?`,
 		"forgot password": `Забыли пароль?`,
+
+		//*************************** */
+		//********* User ************ */
+		//*************************** */
+		profile: `Профиль`,
+		"edit profile": "Редактирование профиля",
 
 		//*************************** */
 		//*********Errors************ */
@@ -45,7 +58,7 @@ export default {
 		usersNotFound: `Пользователь не найден`,
 		"user not found": `Пользователь не найден`,
 		"Email not found": `Email не найден`,
-		notAuthorizedAsAdmin: `Права администратора не авторизированны`,
+		not_admin: `Права администратора не авторизированны`,
 		tokenFailed: `Пользователь не авторизирован, неверный токен`,
 
 		notFound: `По вашему запросу ничего не найдено`,
@@ -55,7 +68,34 @@ export default {
 		//*************************** */
 		//********* Plans *********** */
 		//*************************** */
-		group_workout: `групповая тренировка`,
+		monthly: `1 месяц`,
+		months: `месяца`,
+		annual: `1 год`,
+		group_one: `тренировка в группе`,
+		group_five: `тренировок в группе`,
+		group_ten: `тренировок в группе`,
+		personal_one: `персональная тренировка`,
+		personal_five: `персональных тренировок`,
+		personal_ten: `персональных тренировок`,
+		monthly_subscription: `Подписка на 1 месяц`,
+		three_month_subscription: `Подписка на 3 месяца`,
+		annual_subscription: `Подписка на 12 месяцев`,
+		one_group_workout: `1 тренировка в online группе`,
+		five_group_workouts: `5 тренировок в online группе`,
+		ten_group_workouts: `10 тренировок в online группе`,
+		one_personal_workout: `1 персональная online тренировка`,
+		five_personal_workouts: `5 персональных online тренировок`,
+		ten_personal_workouts: `10 персональных online тренировок`,
+
+		//*************************** */
+		//********* Payment *********** */
+		//*************************** */
+		payment: `Статус: `,
+		paid: `Оплачено`,
+		not_paid: `Не оплачено`,
+		to_pay: `Оплатить`,
+		proceed_to_checkout: `Оформление заказа`,
+		payment_method: "Метод оплаты",
 
 		all: `Все`,
 		abs: `Живот`,

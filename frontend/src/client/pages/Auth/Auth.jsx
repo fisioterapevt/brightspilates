@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import translate from "../../../i18n/translate";
-import GlobalContext from "../../../context/globalContext/global-context";
+import UserContext from "../../../context/userContext/user-context";
 import Button from "../../components/UIElements/Button/Button";
 import Input from "../../components/UIElements/Input/Input";
 import classes from "./Auth.module.scss";
@@ -19,12 +19,12 @@ const Auth = ({ location, history }) => {
 	const {
 		userLogin,
 		login,
-		registerUser,
+		createUser,
 		loading,
 		httpError,
 		locale,
 		resetErrors,
-	} = useContext(GlobalContext);
+	} = useContext(UserContext);
 	const { userInfo } = userLogin;
 
 	const redirect = location.search
@@ -37,7 +37,7 @@ const Auth = ({ location, history }) => {
 		if (userInfo) {
 			history.push(redirect);
 		}
-	}, [history, userInfo, redirect, resetErrors, isLoginMode]);
+	}, [history, userInfo, redirect, resetErrors, isLoginMode, loading]);
 
 	const authSubmitHandler = (evt) => {
 		evt.preventDefault();
@@ -45,7 +45,7 @@ const Auth = ({ location, history }) => {
 		if (isLoginMode) {
 			login(email, password);
 		} else {
-			registerUser(name, email, password, locale);
+			createUser(name, email, password, locale);
 		}
 	};
 

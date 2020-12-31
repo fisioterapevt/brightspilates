@@ -2,16 +2,19 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import "./index.scss";
-import { GlobalState } from "./context/globalContext/GlobalState";
-import { VideoState } from "./context/videoContext/VideoState";
+import { UserState } from "./context/userContext/UserState";
+//import { VideoState } from "./context/videoContext/VideoState";
+import { OrderState } from "./context/orderContext/OrderState";
 
 import App from "./App";
 
 ReactDOM.render(
-	<GlobalState>
-		<VideoState>
+	<UserState>
+		<OrderState>
+			{/*<VideoState>*/}
 			<App />
-		</VideoState>
-	</GlobalState>,
+			{/*</VideoState>*/}
+		</OrderState>
+	</UserState>,
 	document.getElementById("root")
 );

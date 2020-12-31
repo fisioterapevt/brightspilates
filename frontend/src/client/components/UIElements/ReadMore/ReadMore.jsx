@@ -10,8 +10,6 @@ const ReadMore = ({ children, maxCharacterCount = 100 }) => {
 
 	const [isMinimized, setIsMinimized] = useState(true);
 
-	console.log(isMinimized);
-
 	const resultString = isMinimized ? text.slice(0, maxCharacterCount) : text;
 
 	return (

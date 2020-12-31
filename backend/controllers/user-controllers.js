@@ -60,8 +60,9 @@ const authUser = async (req, res) => {
 
 		//* get expiration time
 		const token = generateToken(user._id);
-		const decoded = jwt.verify(token, process.env.JWT_SECRET);
-		const expToken = decoded.exp - decoded.iat;
+		const decoded = jwt.verify(token, process.env.ACCESS_JWT_SECRET);
+		//const expToken = decoded.exp - decoded.iat;
+		const expToken = decoded.exp;
 
 		if (user && (await user.matchPassword(password))) {
 			res.json({
@@ -83,7 +84,7 @@ const authUser = async (req, res) => {
 	}
 };
 
-//* @desc  Register new user
+//* @desc  Create new user
 //* @route  POST /api/users
 //* @access  Public
 const createUser = async (req, res) => {
@@ -98,6 +99,7 @@ const createUser = async (req, res) => {
 		const user = await User.create({
 			name,
 			email,
+			//Password Encryption in models/user-models.js
 			password,
 			image: "/images/no_avatar.gif",
 			created: moment(),

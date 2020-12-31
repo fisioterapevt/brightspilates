@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import Moment from "react-moment";
 
 import VideoContext from "../../../context/videoContext/video-context";
-import GlobalContext from "../../../context/globalContext/global-context";
+import UserContext from "../../../context/userContext/user-context";
 import HttpError from "../../../client/components/UIElements/HttpError/HttpError";
 import Button from "../../../client/components/UIElements/Button/Button";
 import Loader from "../../../client/components/UIElements/Loader/Loader";
@@ -25,7 +25,7 @@ const VideoList = ({ history }) => {
 		successDelete,
 		successCreate,
 	} = useContext(VideoContext);
-	const { userLogin } = useContext(GlobalContext);
+	const { userLogin } = useContext(UserContext);
 
 	//console.log(loading); //! DELETE
 

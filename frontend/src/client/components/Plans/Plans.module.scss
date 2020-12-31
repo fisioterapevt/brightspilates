@@ -1,0 +1,110 @@
+@import "../../../utils/variables.scss";
+
+.Plans {
+	h2 {
+		margin-bottom: 2rem;
+
+		text-transform: uppercase;
+		text-align: center;
+		font-size: $font-size-title;
+		font-weight: $font-weight-medium;
+	}
+}
+
+.description {
+	font-size: $font-size-medium;
+	line-height: 170%;
+	letter-spacing: normal;
+	white-space: pre-line;
+	word-break: break-word;
+
+	margin-bottom: 1rem;
+}
+
+.offerListCheckbox {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+
+	input {
+		@extend %visually-hidden;
+
+		&:checked + label {
+			font-weight: $font-weight-semibold;
+			p {
+				font-weight: $font-weight-default;
+			}
+		}
+
+		&:checked + label::after {
+			opacity: 1;
+		}
+		&:checked + label:before {
+			border-color: #000000;
+		}
+
+		&:checked + label::after {
+			opacity: 1;
+		}
+	}
+
+	label {
+		padding-left: 2rem;
+		font-size: 1rem;
+
+		color: #444;
+		cursor: pointer;
+
+		span {
+			font-weight: $font-weight-semibold;
+		}
+
+		&::before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
+
+			content: "";
+			display: block;
+			width: 20px;
+			height: 20px;
+
+			border: 1px solid $border-base;
+			background-color: $default-color;
+			border-radius: 50%;
+
+			transition: border 0.1s linear;
+		}
+
+		&::after {
+			position: absolute;
+			top: 4px;
+			left: 4px;
+			z-index: 1;
+
+			content: "";
+			display: block;
+			width: 12px;
+			height: 12px;
+
+			background-color: #000000;
+			border-radius: 50%;
+
+			opacity: 0;
+
+			transition: opacity 0.1s linear;
+		}
+	}
+}
+
+.border {
+	margin-top: 16px;
+	margin-bottom: 16px;
+	background-color: rgb(204, 204, 204);
+	height: 1px;
+}
+
+.continueButton {
+	margin: 2rem 0;
+}

@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import classes from "./LangToggle.module.scss";
 
-import GlobalContext from "../../../../context/globalContext/global-context";
+import UserContext from "../../../../context/userContext/user-context";
 
 const LangToggle = ({ externalStyles }) => {
 	const { locale, setLocaleRussian, setLocaleEnglish } = useContext(
-		GlobalContext
+		UserContext
 	);
 	return (
 		<section className={[classes.LangToggle, externalStyles].join(" ")}>

@@ -1,0 +1,84 @@
+{
+  "subscription": {
+    "title": "Выберите абонемент",
+    "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus totam consequuntur vero dolore aliquid tempore dolores! Animi ab perspiciatis dignissimos ut architecto, quibusdam eligendi! Dolores impedit illum nemo sunt tempora!",
+    "items": [
+      {
+        "id": "monthly",
+        "name": "monthly",
+        "fullName": "monthly_subscription",
+        "price": "10",
+        "checked": true
+      },
+      {
+        "id": "months",
+        "name": "months",
+        "fullName": "three_month_subscription",
+        "qty": "3",
+        "price": "40"
+      },
+      {
+        "id": "annual",
+        "name": "annual",
+        "fullName": "annual_subscription",
+        "price": "100"
+      }
+    ]
+  },
+  "groups": {
+    "title": "Выберите блок групповых тренировок",
+    "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus totam consequuntur vero dolore aliquid tempore dolores! Animi ab perspiciatis dignissimos ut architecto, quibusdam eligendi! Dolores impedit illum nemo sunt tempora!",
+    "items": [
+      {
+        "id": "group_one",
+        "name": "group_one",
+        "fullName": "one_group_workout",
+        "qty": "1",
+        "price": "10",
+        "checked": true
+      },
+      {
+        "id": "group_five",
+        "name": "group_five",
+        "fullName": "five_group_workouts",
+        "qty": "5",
+        "price": "50"
+      },
+      {
+        "id": "group_ten",
+        "name": "group_ten",
+        "fullName": "ten_group_workouts",
+        "qty": "10",
+        "price": "100"
+      }
+    ]
+  },
+  "personal": {
+    "title": "Выберите блок персональных тренировок",
+    "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus totam consequuntur vero dolore aliquid tempore dolores! Animi ab perspiciatis dignissimos ut architecto, quibusdam eligendi! Dolores impedit illum nemo sunt tempora!",
+    "items": [
+      {
+        "id": "personal_one",
+        "name": "personal_one",
+        "fullName": "one_personal_workout",
+        "qty": "1",
+        "price": "100",
+        "checked": true
+      },
+      {
+        "id": "personal_five",
+        "name": "personal_five",
+        "fullName": "five_personal_workouts",
+        "qty": "5",
+        "price": "500"
+      },
+      {
+        "id": "personal_ten",
+        "name": "personal_ten",
+        "fullName": "ten_personal_workouts",
+        "qty": "10",
+        "price": "1000"
+      }
+    ]
+  }
+}

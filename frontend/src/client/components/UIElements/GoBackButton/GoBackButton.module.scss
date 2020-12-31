@@ -1,0 +1,14 @@
+@import "../../../../utils/variables.scss";
+
+$radius: 3px;
+
+.GoBackButton {
+	display: inline-block;
+
+	cursor: pointer;
+
+	svg {
+		width: 4rem;
+		height: 4rem;
+	}
+}

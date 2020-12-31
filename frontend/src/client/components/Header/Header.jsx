@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import classes from "./Header.module.scss";
@@ -11,12 +11,16 @@ import DropdownMenu from "../Navigation/DropdownMenu/DropdownMenu";
 import UserNavigation from "../Navigation/UserNavigation/UserNavigation";
 import AdminNavigation from "../Navigation/AdminNavigation/AdminNavigation";
 
-const Header = ({ userLogin }) => {
+const Header = ({ userLogin, logout }) => {
 	const { userInfo } = userLogin;
 
 	const [isVisible, setIsVisible] = useState(false);
 
-	//console.log(userInfo.name);
+	//useEffect(() => {
+	//	if (userInfo && new Date() >= new Date(userInfo.expToken * 1000)) {
+	//		logout();
+	//	}
+	//}, [userInfo, logout]);
 
 	return (
 		<header className={classes.Header}>

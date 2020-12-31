@@ -20,13 +20,20 @@ export default {
 		Cancel: `Cancel`,
 
 		//************************* */
-		//***** Authentication **** */
+		//********* Button ******** */
 		//************************* */
 		signin: `Sign In`,
 		signinBtn: `Sign In`,
 		signup: `Sign Up`,
 		signupBtn: `Sign Up`,
 		logout: `Log Out`,
+		"go back": `Go Back`,
+		continue: `Continue`,
+
+		//************************* */
+		//***** Authentication **** */
+		//************************* */
+
 		username: `Please enter a name`,
 		useremail: `E-mail`,
 		userpassword: `Password`,
@@ -34,6 +41,12 @@ export default {
 		notAccount: `New to Bright's Pilates? `,
 		"have an account": `Have an account? `,
 		"forgot password": "Forgot Password?",
+
+		//*************************** */
+		//********* User ************ */
+		//*************************** */
+		profile: `Profile`,
+		"edit profile": "Edit profile",
 
 		//*************************** */
 		//*********Errors************ */
@@ -45,12 +58,47 @@ export default {
 		usersNotFound: `Users not found`,
 		"user not found": `Users not found`,
 		"Email not found": `Email not found`,
-		notAuthorizedAsAdmin: `Not authorized as an admin`,
+		not_admin: `Not authorized as an admin`,
 		tokenFailed: `No authorized, token failed`,
 
 		notFound: `No results were found for your search`,
 		differentQuery: `Try using a different query`,
 		"Network Error": `Network Error`,
+
+		//*************************** */
+		//********* Plans *********** */
+		//*************************** */
+		group_workout: `групповая тренировка`,
+		monthly: `Monthly`,
+		months: `months`,
+		annual: `Annual`,
+		group_one: `On-line group workout`,
+		group_five: `On-line group workouts`,
+		group_ten: `On-line group workouts`,
+
+		personal_one: `On-line personal workout`,
+		personal_five: `On-line personal workouts`,
+		personal_ten: `On-line personal workouts`,
+
+		monthly_subscription: `Monthly Subscription`,
+		three_month_subscription: `3-Month Subscription`,
+		annual_subscription: `Annual Subscription`,
+		one_group_workout: `One group workout online`,
+		five_group_workouts: `Five group workouts online`,
+		ten_group_workouts: `Ten group workouts online`,
+		one_personal_workout: `Personal online workout`,
+		five_personal_workouts: `5 Personal online workouts`,
+		ten_personal_workouts: `10 Personal online workouts`,
+
+		//*************************** */
+		//********* Payment *********** */
+		//*************************** */
+		payment: `Payment: `,
+		paid: `Paid`,
+		not_paid: `Not Paid`,
+		to_pay: `Pay`,
+		proceed_to_checkout: `Proceed To Checkout`,
+		payment_method: "Payment Method",
 
 		all: `All`,
 		abs: `ABS`,

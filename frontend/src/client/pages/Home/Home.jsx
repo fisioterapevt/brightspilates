@@ -8,9 +8,10 @@ import classes from "./Home.module.scss";
 
 const Home = () => {
 	console.log(localStorage.getItem("userInfo"));
+	console.log(localStorage.getItem("order"));
 	return (
 		<section className={classes.Home}>
-			<h2 className={classes.headline}>{translate(`home`, {})}</h2>
+			<h2 className={classes.headline}>{translate(`home`)}</h2>
 			<Card />
 			<NotFound />
 		</section>

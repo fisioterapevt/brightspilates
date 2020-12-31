@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import VideoContext from "../../../context/videoContext/video-context";
-import GlobalContext from "../../../context/globalContext/global-context";
+import UserContext from "../../../context/userContext/user-context";
 import Loader from "../../../client/components/UIElements/Loader/Loader";
 import Input from "../../../client/components/UIElements/Input/Input";
 
@@ -14,7 +14,7 @@ import classes from "./VideoEdit.module.scss";
 
 const VideoEdit = ({ match, history }) => {
 	const { video, loading, successUpdate } = useContext(VideoContext);
-	const { uploadContent } = useContext(GlobalContext);
+	const { uploadContent } = useContext(UserContext);
 
 	const videoId = match.params.id;
 

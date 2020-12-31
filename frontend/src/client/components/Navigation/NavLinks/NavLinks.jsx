@@ -1,15 +1,22 @@
 import React, { useContext } from "react";
 
-import GlobalContext from "../../../../context/globalContext/global-context";
+import UserContext from "../../../../context/userContext/user-context";
 import classes from "./NavLinks.module.scss";
 import translate from "../../../../i18n/translate";
 import NavigationLink from "./NavLink/NavLink";
 
 import { mainLinks } from "../../../data/links.json";
+import OrderContext from "../../../../context/orderContext/order-context";
 
 const NavLinks = ({ externalStyles, onClick }) => {
-	const { userLogin, logout } = useContext(GlobalContext);
+	const { userLogin, logout } = useContext(UserContext);
+	const { resetOrderState } = useContext(OrderContext);
 	const { userInfo } = userLogin;
+
+	const logoutHandler = () => {
+		logout();
+		resetOrderState();
+	};
 
 	return (
 		<ul className={[classes.NavigationItems, externalStyles].join(" ")}>
@@ -27,7 +34,7 @@ const NavLinks = ({ externalStyles, onClick }) => {
 			})}
 			{userInfo ? (
 				<>
-					<button onClick={logout}>
+					<button onClick={() => logoutHandler()}>
 						Logout
 						{/*{translate(`signin`, {})}*/}
 					</button>

@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 import Moment from "react-moment";
 
 import HttpError from "../../../client/components/UIElements/HttpError/HttpError";
-import GlobalContext from "../../../context/globalContext/global-context";
+import UserContext from "../../../context/userContext/user-context";
 import translate from "../../../i18n/translate";
 import Button from "../../../client/components/UIElements/Button/Button";
 import { ReactComponent as CloseIcon } from "../../../assets/svg/close_red-icon.svg";
@@ -24,7 +24,7 @@ const UserList = ({ history }) => {
 		httpError,
 		successDelete,
 		loading,
-	} = useContext(GlobalContext);
+	} = useContext(UserContext);
 	const { userInfo } = userLogin;
 
 	//console.log(userInfo); //!

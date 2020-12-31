@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 
 import translate from "../../../../i18n/translate";
-import GlobalContext from "../../../../context/globalContext/global-context";
+import UserContext from "../../../../context/userContext/user-context";
 import Button from "../../../components/UIElements/Button/Button";
 import Loader from "../../../components/UIElements/Loader/Loader";
 import HttpError from "../../../components/UIElements/HttpError/HttpError";
@@ -17,7 +17,7 @@ const ResetPass = ({ history }) => {
 		loading,
 		locale,
 		message,
-	} = useContext(GlobalContext);
+	} = useContext(UserContext);
 
 	const [email, setEmail] = useState("");
 

@@ -106,7 +106,7 @@ const updateAvatar = (state, url) => {
 };
 
 export const passError = (state, error) => {
-	//console.log(`ERROR FROM GLOBAL REDUCERS: `, error);
+	//console.log(`ERROR FROM USER REDUCERS: `, error);
 	return updateObject(state, { loading: false, httpError: error });
 };
 
@@ -139,7 +139,7 @@ export const reset = (state) => {
 //************* FILE ***************/
 //**********************************/
 
-export const globalReducer = (state, action) => {
+export const userReducer = (state, action) => {
 	switch (action.type) {
 		case actionTypes.SET_LOCALE_RUSSIAN:
 			return setLocaleRussian(state);
@@ -155,11 +155,11 @@ export const globalReducer = (state, action) => {
 		case actionTypes.USER_LOGOUT:
 			return logout(state);
 
-		case actionTypes.USER_REGISTER_REQUEST:
+		case actionTypes.USER_CREATE_REQUEST:
 			return fetchStart(state);
-		case actionTypes.USER_REGISTER_SUCCESS:
+		case actionTypes.USER_CREATE_SUCCESS:
 			return login(state, action.payload);
-		case actionTypes.USER_REGISTER_FAIL:
+		case actionTypes.USER_CREATE_FAIL:
 			return passError(state, action.payload);
 
 		case actionTypes.USER_UPDATE_PROFILE_REQUEST:
