@@ -1,14 +1,12 @@
 const jwt = require("jsonwebtoken");
 const moment = require("moment");
 const crypto = require("crypto");
-
-//const nodemailer = require("nodemailer");
-//const sendgrid = require("nodemailer-sendgrid-transport");
 const sendgridMail = require("@sendgrid/mail");
 
 const { successReg, resetPass } = require("../emails/auth-emails");
 const User = require("../models/user-model");
 const generateToken = require("../utils/generateToken");
+const { unlink } = require("fs");
 
 //*********************************/
 //************* ADMIN *************/
@@ -88,6 +86,7 @@ const authUser = async (req, res) => {
 //* @route  POST /api/users
 //* @access  Public
 const createUser = async (req, res) => {
+	console.log(req.body);
 	try {
 		const { name, email, password, locale } = req.body;
 
@@ -166,10 +165,16 @@ const updateUserProfile = async (req, res) => {
 	try {
 		const user = await User.findById(req.user._id);
 
+		if (req.file) {
+			unlink(user.image, (err) => {
+				console.log(err);
+			});
+		}
+
 		if (user) {
 			user.name = req.body.name || user.name;
 			user.email = req.body.email || user.email;
-			user.image = req.body.image || user.image;
+			user.image = req.file ? req.file.path : user.image;
 			user.created = user.created;
 
 			if (req.body.password) {

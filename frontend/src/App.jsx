@@ -22,6 +22,7 @@ import UserContext from "./context/userContext/user-context";
 import NewPass from "./client/pages/Auth/ResetPass/NewPass/NewPass";
 import EditProfile from "./client/pages/EditProfile/EditProfile";
 import PlaceOrder from "./client/pages/PlaceOrder/PlaceOrder";
+import Footer from "./client/components/Footer/Footer";
 
 const App = () => {
 	const { locale, userLogin, logout } = useContext(UserContext);
@@ -75,6 +76,7 @@ const App = () => {
 			<Router>
 				<Header userLogin={userLogin} logout={logout} />
 				<main>{routes}</main>
+				<Footer />
 			</Router>
 		</I18Provider>
 	);

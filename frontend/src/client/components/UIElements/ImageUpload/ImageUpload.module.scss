@@ -1,0 +1,36 @@
+@import "../../../../utils/variables.scss";
+
+.ImageUpload {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	img {
+		position: relative;
+		width: 60%;
+		max-width: 16rem;
+		height: auto;
+		margin-bottom: 1rem;
+		//margin: 0 auto;
+	}
+
+	label {
+		position: absolute;
+		width: 30%;
+		max-width: 6rem;
+
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		//opacity: 0;
+		cursor: pointer;
+		transition: all 0.3s ease-in;
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+
+	input {
+		@extend %visually-hidden;
+	}
+}

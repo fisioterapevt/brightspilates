@@ -5,7 +5,6 @@ import { CSSTransition } from "react-transition-group";
 import classes from "./Drawer.module.scss";
 import { ReactComponent as Logo } from "../../../../assets/svg/logo.svg";
 import LangToggle from "../../UIElements/LangToggle/LangToggle";
-
 // rendering drow menu  through portal
 const Drawer = ({ children, closeDrawerHandler, show }) => {
 	const content = (

@@ -125,15 +125,26 @@ export const UserState = ({ children }) => {
 				type: actionTypes.USER_UPDATE_PROFILE_REQUEST,
 			});
 
-			//const { userInfo } = userState.userLogin;
+			const formData = new FormData();
+			formData.append("email", user.email);
+			formData.append("name", user.name);
+			formData.append("password", user.password);
+			//formData.append("image", user.image);
+			formData.append("avatar", user.image);
 
-			const config = {
+			const configUpload = {
 				headers: {
+					"Content-Type": "multipart/form-data",
 					Authorization: `Bearer ${userInfo.token}`,
 				},
 			};
 
-			const { data } = await axios.put(`/api/users/profile`, user, config);
+			const { data } = await axios.put(
+				`/api/users/profile`,
+				formData,
+				configUpload
+			);
+
 			dispatch({
 				type: actionTypes.USER_UPDATE_PROFILE_SUCCESS,
 				payload: data,
@@ -151,40 +162,8 @@ export const UserState = ({ children }) => {
 		}
 	};
 
-	//@ UPDATE AVATAR
-	const updateAvatar = async (name, file) => {
-		const formData = new FormData();
-		formData.append(name, file);
-
-		try {
-			dispatch({
-				type: actionTypes.AVATAR_UPDATE_REQUEST,
-			});
-
-			const configUpload = {
-				headers: { "Content-Type": "multipart/form-data" },
-			};
-
-			const { data } = await axios.post(
-				"/api/upload",
-				formData,
-				configUpload
-			);
-
-			dispatch({
-				type: actionTypes.AVATAR_UPDATE_SUCCESS,
-				payload: data,
-			});
-		} catch (error) {
-			console.log(error);
-			dispatch({
-				type: actionTypes.AVATAR_UPDATE_FAIL,
-				payload: error,
-			});
-		}
-	};
-
 	//@ RESET PASSWORD
+
 	const resetPassword = async (email, history, locale) => {
 		try {
 			dispatch({
@@ -417,7 +396,7 @@ export const UserState = ({ children }) => {
 				getListUsers,
 				updateUserProfile,
 				deleteUser,
-				updateAvatar,
+				//updateAvatar,
 				uploadContent,
 				setNewPassword,
 				resetErrors,

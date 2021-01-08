@@ -1,24 +1,32 @@
 .Tab {
-	width: calc(100% - 4rem);
-	height: calc(100% - 2rem);
+	position: absolute;
+	width: 100%;
+	//height: calc(100% - 2rem);
+	border-left: 1px solid;
+}
 
-	//border-radius: 0.6rem;
-	//border: 1px solid #b6bfc9;
-	//border-radius: 0.6rem;
+.innerContent {
+	padding: 1rem;
+	opacity: 1;
+	background: #edf0f1;
+}
 
-	.innerContent {
-		height: 100%;
+.tabEnterActive {
+	animation: changeTab 500ms;
+}
 
-		opacity: 1;
-		background: #ffffff;
-		border-radius: 0.6rem;
-
-		transition: opacity 500ms ease-in-out;
-	}
+.tabExitActive {
+	animation: changeTab alternate-reverse 500ms;
 }
 
 @keyframes changeTab {
 	0% {
+		opacity: 0;
+	}
+	40% {
+		opacity: 0;
+	}
+	50% {
 		opacity: 0;
 	}
 	100% {

@@ -13,7 +13,7 @@ const Home = () => {
 		<section className={classes.Home}>
 			<h2 className={classes.headline}>{translate(`home`)}</h2>
 			<Card />
-			<NotFound />
+			{/*<NotFound />*/}
 		</section>
 	);
 };

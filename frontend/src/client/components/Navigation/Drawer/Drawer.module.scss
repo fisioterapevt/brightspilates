@@ -1,66 +1,75 @@
 @import "../../../../utils/variables.scss";
 
 .Drawer {
-	position: fixed;
-	left: 0;
-	top: 0;
-	z-index: 1199;
-	height: 100vh;
-	width: 70%;
-	background: #000000;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-	overflow-y: scroll;
+	display: none;
+}
 
-	ul {
-		justify-content: center;
-		align-items: center;
+@media screen and (max-width: $smDesktopWidth) {
+	.Drawer {
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: 1199;
 
-		margin: 3rem;
-		li {
-			margin-left: 2rem;
-			margin-bottom: 5rem;
-			a {
-				color: #ffffff;
+		display: block;
+
+		height: 100vh;
+		width: 100%;
+		background: #000000;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+		overflow-y: scroll;
+
+		ul {
+			justify-content: center;
+			align-items: center;
+
+			margin: 3rem;
+			li {
+				margin-left: 2rem;
+				margin-bottom: 5rem;
+				a {
+					color: #ffffff;
+				}
 			}
+		}
+
+		.logo {
+			margin-top: 1rem;
+			width: 17rem;
+		}
+
+		svg text {
+			fill: #ffffff;
 		}
 	}
 
-	.logo {
-		margin-top: 1rem;
-		width: 17rem;
+	.closeButton {
+		position: absolute;
+		right: 0;
+		top: 0;
+
+		width: 34px;
+		height: 34px;
+
+		background: none;
+		border: none;
+
+		background-image: url(../../../../assets/svg/close-icon.svg);
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+
+		cursor: pointer;
 	}
 
-	svg text {
-		fill: #ffffff;
-	}
-}
+	.langToggle {
+		button {
+			font-size: $font-size-big;
+			color: #ffffff63;
 
-.closeButton {
-	position: absolute;
-	right: 0;
-	top: 0;
-
-	width: 34px;
-	height: 34px;
-
-	background: none;
-	border: none;
-
-	background-image: url(../../../../assets/svg/close-icon.svg);
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-
-	cursor: pointer;
-}
-
-.langToggle {
-	button {
-		font-size: $font-size-big;
-		color: #ffffff63;
-
-		&:disabled {
-			color: #ffffff;
+			&:disabled {
+				color: #ffffff;
+			}
 		}
 	}
 }
@@ -74,22 +83,19 @@
 }
 
 .slideDropDownEnter {
-	transform: translateX(-100%);
+	height: 0px;
 }
 
 .slideDropDownEnterActive {
-	transform: translateX(0);
-	opacity: 1;
-	transition: all 200ms;
+	height: 100vh;
+	transition: height 250ms ease;
 }
 
 .slideDropDownExit {
-	transform: translateX(0%);
-	opacity: 1;
+	height: 100vh;
 }
 
 .slideDropDownExitActive {
-	transform: translateX(-100%);
-	opacity: 0;
-	transition: all 200ms;
+	height: 0;
+	transition: height 250ms ease;
 }

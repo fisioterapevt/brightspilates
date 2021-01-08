@@ -6,7 +6,6 @@ import UserContext from "../../../context/userContext/user-context";
 import OrderContext from "../../../context/orderContext/order-context";
 
 import translate from "../../../i18n/translate";
-import { ReactComponent as UploadIcon } from "../../../assets/svg/upload_picture-icon.svg";
 import purchases from "../../data/purchases.json";
 
 import classes from "./Profile.module.scss";
@@ -26,9 +25,7 @@ const tabs = [
 ];
 
 const Profile = ({ history }) => {
-	const { userLogin, locale, updateAvatar, checkTokenIsValid } = useContext(
-		UserContext
-	);
+	const { userLogin, locale, checkTokenIsValid } = useContext(UserContext);
 	const {
 		order,
 		orders,
@@ -50,7 +47,7 @@ const Profile = ({ history }) => {
 	const [email, setEmail] = useState("");
 	const [image, setImage] = useState("");
 	const [date, setDate] = useState("unknown");
-	const [previewImage, setPreviewImage] = useState("");
+	//const [previewImage, setPreviewImage] = useState("");
 
 	const [selectedTab, setSelectedTab] = useState("current");
 
@@ -78,21 +75,6 @@ const Profile = ({ history }) => {
 		checkTokenIsValid,
 	]);
 
-	//@ download avatar image
-	const uploadFileHandler = (evt) => {
-		const file = evt.target.files[0];
-
-		if (file) {
-			const reader = new FileReader();
-			reader.onload = function (e) {
-				setPreviewImage(e.target.result);
-			};
-			reader.readAsDataURL(file);
-
-			updateAvatar("avatar", file);
-		}
-	};
-
 	//@ сохранение заказа в базе данных
 	const placeOrderHandler = (purchase) => {
 		createOrder(
@@ -112,24 +94,8 @@ const Profile = ({ history }) => {
 			</div>
 			<div className={classes.innerContent}>
 				<div className={classes.bio}>
-					<button className={classes.uploadButton}>
-						<div className={classes.uploadImage}>
-							<img src={previewImage || image} alt={name} />
-							<label htmlFor="image-file">
-								<UploadIcon />
-							</label>
-							<input
-								id="image-file"
-								type="file"
-								onChange={uploadFileHandler}
-								accept=".jpg, .jpeg, .png, .gif, .bmp"
-							></input>
-						</div>
-					</button>
-
-					<div className={classes.bioUsername}>
-						<h3>{name}</h3>
-					</div>
+					<img src={image} alt={`avatar-${name}`} />
+					<h3>{name}</h3>
 					<p className={classes.accountSince}>
 						{translate(`Account created on`, { email })}
 						<Moment locale={locale} fromNow date={new Date(date)} />
@@ -175,67 +141,6 @@ const Profile = ({ history }) => {
 						</Tab>
 					</TabNav>
 				</div>
-
-				{/*<div className={classes.actionBlock}>
-					<div className={classes.actions}>
-						<button
-							className={classes.userActionButton}
-							onClick={addToCartHandler}
-						>
-							<h3>${plans.group_workout_min.price}</h3>
-							<p>
-								{plans.group_workout_min.qty}
-								{translate(plans.group_workout_min.name)}
-							</p>
-						</button>
-						<button
-							className={classes.userActionButton}
-							onClick={addToCartHandler}
-						>
-							<h3>80$</h3>
-							<p> 10 групповых тренировок</p>
-						</button>
-					</div>
-					<div className={classes.actions}>
-						<button
-							className={classes.userActionButton}
-							onClick={addToCartHandler}
-						>
-							<h3>100$</h3>
-							<p> 1 персональная тренировка</p>
-						</button>
-						<button
-							className={classes.userActionButton}
-							onClick={addToCartHandler}
-						>
-							<h3>450$</h3>
-							<p> 5 персональных тренировок</p>
-						</button>
-						<button
-							className={classes.userActionButton}
-							onClick={addToCartHandler}
-						>
-							<h3>800$</h3>
-							<p> 10 персональных тренировок</p>
-						</button>
-					</div>
-					<div className={classes.actions}>
-						<button
-							className={classes.userActionButton}
-							onClick={addToCartHandler}
-						>
-							<h3>10$</h3>
-							<p>1 месяц подписки</p>
-						</button>
-						<button
-							className={classes.userActionButton}
-							onClick={addToCartHandler}
-						>
-							<h3>80$</h3>
-							<p> 1 год подписки</p>
-						</button>
-					</div>
-				</div>*/}
 			</div>
 		</section>
 	);

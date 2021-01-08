@@ -16,37 +16,38 @@ const TabNav = ({ tabs, isSelectedTab, onSetActiveTabHandler, children }) => {
 		}
 
 		return (
-			<CSSTransition
-				key={tab.name}
-				timeout={300000}
-				mountOnEnter
-				unmountOnExit
-				classNames={{
-					enter: classes.tabEnter,
-					enterActive: classes.tabEnterActive,
-					enterDone: classes.tabEnterDone,
-					exit: classes.tabExit,
-					exitActive: classes.tabExitActive,
-					exitDone: classes.tabExitDone,
-				}}
-			>
-				<li className={clsLink.join(" ")}>
-					<button
-						data-test-id={tab.testId}
-						className={clsButton.join(" ")}
-						onClick={() => onSetActiveTabHandler(tab.name)}
-					>
-						{icon ? <img src={icon} alt={tab.name} /> : null}
-						{tab.name}
-					</button>
-				</li>
-			</CSSTransition>
+			//<CSSTransition
+			//	key={tab.name}
+			//	timeout={300}
+			//	mountOnEnter
+			//	unmountOnExit
+			//	classNames={{
+			//		enter: classes.tabEnter,
+			//		enterActive: classes.tabEnterActive,
+			//		enterDone: classes.tabEnterDone,
+			//		exit: classes.tabExit,
+			//		exitActive: classes.tabExitActive,
+			//		exitDone: classes.tabExitDone,
+			//	}}
+			//>
+			<li key={tab.name} className={clsLink.join(" ")}>
+				<button
+					data-test-id={tab.testId}
+					className={clsButton.join(" ")}
+					onClick={() => onSetActiveTabHandler(tab.name)}
+				>
+					{icon ? <img src={icon} alt={tab.name} /> : null}
+					{tab.name}
+				</button>
+			</li>
+			//</CSSTransition>
 		);
 	});
 
 	return (
 		<div className={classes.TabNav}>
-			<TransitionGroup component={"ul"}>{tabNav}</TransitionGroup>
+			{/*<TransitionGroup component={"ul"}>{tabNav}</TransitionGroup>*/}
+			<ul>{tabNav}</ul>
 			<div className={classes.tabwrap}>{children}</div>
 		</div>
 	);
